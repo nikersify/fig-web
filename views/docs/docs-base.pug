@@ -1,0 +1,29 @@
+extends ../base
+
+block content
+	include ../modules/nav-fixed
+
+	.docs
+		aside
+			.aside-inner
+				a(href=guides[0].url): h1 Guide
+				each guide in guides
+					a(href=guide.url
+						class={active: currentGuide === guide})= guide.title
+
+				a(href='/docs/api'
+					class={active: isApi}): h1 API
+		.content
+			.content-inner
+				block doc
+
+				.navigation
+					if navPrev
+						.prev ← #[a(href=navPrev.url)= navPrev.title]
+
+					if navNext
+						.next #[a(href=navNext.url)= navNext.title] →
+
+				.contribute.
+					Found an error?
+					#[a(href=currentGuide.github) Edit this page on GitHub!]

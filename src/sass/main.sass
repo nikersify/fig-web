@@ -1,0 +1,73 @@
+@import '_fonts'
+@import '_helpers'
+@import '_variables'
+
+@import 'sections/_base'
+@import 'sections/_cfa'
+@import 'sections/_docs'
+@import 'sections/_footer'
+@import 'sections/_nav'
+@import 'sections/_splash'
+@import 'sections/_try-it'
+
+@import 'articles/_editor'
+@import 'articles/_example'
+
+*
+	box-sizing: border-box
+
+html, body
+	background-color: white
+	color: $black-text
+	font-family: 'Open Sans', sans-serif
+	font-size: 15px
+	min-height: 100%
+
+a.button
+	background-color: $lead
+	border-radius: 100px
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	box-shadow: $shadow-box
+	color: white
+	cursor: pointer
+	display: inline-block
+	font-family: Bebas
+	font-weight: bold
+	outline: none
+	padding-top: 0.3em
+	text-align: center
+	text-decoration: none
+	text-shadow: $text-shadow
+
+p
+	margin: 1em 0 1em 0
+
+	&.annotation
+		color: $muted-text
+		margin: 0
+		line-height: 1em
+		font-size: 0.75em
+
+a
+	color: inherit
+	cursor: pointer
+	text-decoration: underline
+
+b
+	font-weight: bold
+
+i
+	font-style: italic
+
+sup
+	color: inherit
+	font-size: smaller
+	vertical-align: super
+
+.container
+	max-width: 1300px
+	padding: 0 50px 0 50px
+	margin: auto
+
+	&:after
+		clear: both

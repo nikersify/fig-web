@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "sass": "node-sass src/sass/main.sass public/css/styles.css",
+    "sass:watch": "npm run sass -- --watch",
+    "js": "browserify src/js/index.js -t figify -t cssify -o public/js/bundle.js -v",
+    "js:watch": "watchify src/js/index.js -t figify -t cssify -o public/js/bundle.js -v"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "browserify": "^14.4.0",
+    "codemirror": "^5.28.0",
+    "cssify": "^1.0.3",
+    "express": "^4.15.3",
+    "figify": "^0.1.3",
+    "figjs": "^0.1.2",
+    "pify": "^3.0.0",
+    "pug": "^2.0.0-rc.2",
+    "strip-ansi": "^4.0.0",
+    "watchify": "^3.9.0"
+  },
+  "xo": {
+    "semicolon": false
+  }
+}

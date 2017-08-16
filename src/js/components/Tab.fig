@@ -1,0 +1,61 @@
+label editor-tab
+
+template
+	.tab(class=classList
+		@click=selectTab
+		@dblclick=editTab)
+
+		input(id=`tab-input-${tab.id}`
+			value=tab.name
+			spellcheck='false'
+			@keyup=confirmEdit)
+
+		if closable
+			button(@click=removeTab) x
+
+		unless tab.editing
+			| #{tab.name}
+
+script
+	export default function (view, opts, emit) {
+		const id = opts.tab.id
+
+		view.tab = opts.tab
+		view.closable = opts.closable
+
+		view.classList = {
+			selected: opts.tab.selected,
+			editing: opts.tab.editing
+		}
+
+		view.selectTab = e => {
+			if (e.target.nodeName !== 'DIV') {
+				return
+			}
+
+			emit('tab select', id)
+		}
+
+		view.removeTab = e => {
+			emit('tab remove', id)
+		}
+
+		view.editTab = e => {
+			if (e.target.nodeName !== 'DIV') {
+				return
+			}
+
+			emit('tab edit', id)
+		}
+
+		view.confirmEdit = e => {
+			if (e.type === 'keyup' && e.key !== 'Enter') {
+				return
+			}
+
+			const value = e.target.value
+			emit('tab edit confirm', {
+				id, value
+			})
+		}
+	}

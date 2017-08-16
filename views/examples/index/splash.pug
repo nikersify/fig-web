@@ -1,0 +1,27 @@
+.__example
+	.file
+		.name app.js
+		script(type='x-example').
+			const fig = require('figjs')
+			const app = fig()
+
+			app.use(require('./Main.fig'))
+
+			app.mount('#app', 'main-view')
+	.file
+		.name Main.fig
+		script(type='x-example').
+			label main-view
+
+			template
+				h1= kek
+
+			script.
+				export default (view, opts, bus) => {
+					view.kek = 'welcome!'
+				}
+	.file
+		.name index.html
+		script(type='x-example').
+			<div id='app'></div>
+

@@ -1,0 +1,53 @@
+extends ../docs-base
+
+block doc
+	h1 Bus messaging
+	p todo: complete data flow diagram
+	p.
+		All data in from components in fig going upwards is meant to flow
+		through the #[b event bus]. It can be accessed through the
+		#[b .on], #[b .once], #[b .off] and #[b .emit] properties of the fig
+		instance, or with the #[b emit] parameter passed to a component.
+	p.
+		The methods do what their names' suggest, meant to be used the same as
+		node's built-in EventEmitter. For detailed usage, see the
+		#[a(href='/docs/api#todo') API reference].
+
+	.__example
+		.file
+			.name app.js
+			script(type='x-example').
+				const fig = require('figjs')
+				const app = fig()
+
+				app.use(require('./Component.fig'))
+
+				app.on('button click', time => {
+					alert(`clicked the button at ${time}s!`)
+				})
+
+				app.mount('#app', 'component')
+		.file
+			.name Component.fig
+			script(type='x-example').
+				template
+					button(@click = clicked) Click me!
+
+				script.
+					export default (view, opts, emit) => {
+						view.clicked = e => {
+							const time = (e.timeStamp / 1000).toFixed(2)
+							emit('button click', time)
+						}
+					}
+		.file
+			.name index.html
+			script(type='x-example').
+				<div id='app'></div>
+	h2 Instance events
+	p.
+		Fig emits the following events on all of its instances:
+	.nest
+		p #[b fig ready] is emitted after the app is mounted and rendered.
+		p #[b fig update pre] is emitted right before the view is updated.
+		p #[b fig update] is emitted after the view gets updated.

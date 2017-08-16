@@ -1,0 +1,44 @@
+label code-editor
+
+template
+	article.editor
+		.source
+			button.run(@click=run style={display: showRun ? 'block' : 'none'})
+				| run code
+
+			.tabs
+				each tab in tabs
+					editor-tab(tab=tab closable=(tabs.length > 1))
+				.tab.new(@click=newTab) +
+
+			+skip('code')
+				.code
+
+		.result-container
+			.overlay(class=overlay)
+				if overlay === 'error'
+					pre= errorMsg
+
+			+skip('result')
+				.result
+
+style
+	code-editor {
+		display: block;
+	}
+
+script
+	export default (view, opts, emit) => {
+		view.errorMsg = opts.errorMsg
+		view.overlay = opts.overlay
+		view.showRun = opts.pendingChanges
+		view.tabs = opts.tabs
+
+		view.newTab = e => {
+			emit('tab new')
+		}
+
+		view.run = e => {
+			emit('code run')
+		}
+	}

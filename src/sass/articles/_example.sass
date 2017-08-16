@@ -1,0 +1,46 @@
+article.example
+	display: flex
+	align-items: flex-start
+
+	.code, .description
+		flex-basis: 0
+
+	.code
+		flex-grow: 4
+	.description
+		flex-grow: 5
+		margin: 35px
+
+		h1
+			font-family: Bebas
+			font-size: 2em
+			font-weight: bold
+			margin-bottom: 0.5em
+
+		.main
+			border-bottom: 1px black solid
+
+			ul
+				margin-bottom: 1em
+				list-style: circle outside
+
+				li
+					margin: 0.5em
+
+		.annotations
+			color: $muted-text
+			counter-reset: cool-count
+			font-size: 0.9em
+			list-style: none
+			margin-top: 1em
+
+			li
+				counter-increment: cool-count
+				line-height: 1em
+
+				&:before
+					content: counter(cool-count)
+					font-size: 0.8em
+					font-weight: bold
+					margin: 0.5em
+					vertical-align: middle

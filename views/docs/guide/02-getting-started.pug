@@ -1,0 +1,48 @@
+extends ../docs-base
+
+block doc
+	h1 Getting started
+	h2 Introduction
+	p.
+		Fig uses something called "components", which are ought to be contained
+		in files with a .fig extension. Before being able to use them in a
+		browser environment, they need to be processed by the
+		#[a(href='https://github.com/nikersify/fig-compiler') fig-compiler]
+		package. Luckily, you don't have to compile them manually, as fig
+		provides two other ways of accomplishing that task -
+		the browserify way and the express middleware way. The latter one is
+		simpler to set up if you just want to mess around without getting into
+		browserify, but not really meant to be used outside of development -
+		you can read more about it
+		#[a(href='https://github.com/nikersify/fig-compiler#connect-middleware') here].
+
+	h2 Download
+	p.
+		Fig provides a #[a(href='https://github.com/umdjs/umd') UMD]
+		build, which means that you can use it as an AMD module (RequireJS),
+		require it with CommonJS (Browserify), or even include a plain script
+		tag in your html and use it globally.
+	p.
+		Installing with npm: #[code npm install --save figjs]
+
+	- escaped = '<script src="https://unpkg.com/figjs">'
+	p.
+		Pulling from a CDN: #[code= escaped]
+
+	h2 Browserify
+	p.
+		Setting up browserify is a relatively easy process. Fig provides a
+		browserify transform -
+		#[a(href='https://github.com/nikersify/figify') figify],
+		which automagically transforms all required .fig and .pug files into
+		easy by fig to consume objects.
+	p.
+		Install browserify globally (might have to be ran with admin privileges):
+		#[code npm install -g browserify]
+	p.
+		Get the figify transform: #[code npm install --save figify]
+
+	- escaped = 'browserify <input> -t figify -o <output>'
+	p.
+		Building your bundle:
+		#[code= escaped]

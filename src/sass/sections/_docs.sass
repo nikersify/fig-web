@@ -1,0 +1,101 @@
+.docs
+	display: flex
+
+	aside
+		min-width: 300px
+		padding: 1em 1em 2em 4em
+
+		.aside-inner
+			position: fixed
+
+			h1
+				font-size: 2em
+				margin: 1em 0 0.5em 0
+
+			a
+				color: $muted-text
+				display: block
+				margin-bottom: 0.5em
+				text-decoration: none
+
+				&:hover
+					color: black
+
+			.active
+				font-weight: bold
+
+	.content
+		flex: 1
+		padding: 0 300px 0 50px
+
+		.content-inner
+			max-width: 750px
+			margin: 100px auto 100px auto
+
+			h1
+				border-bottom: 1px solid rgba(black, 0.5)
+				display: inline-block
+				font-size: 2.5em
+				padding-bottom: 0.5em
+
+			h2
+				font-size: 1.5em
+				font-weight: bold
+				margin: 1em 0 1em 0
+
+			h3
+				font-size: 1.25em
+				font-weight: bold
+				margin: 1em 0 1em 0
+
+			.nest
+				border-left: 3px solid rgba(black, 0.1)
+				margin: 1em 0 1em 0
+				padding-left: 2em
+
+			p
+				line-height: 1.5em
+
+			blockquote
+				color: $muted-text
+				font-style: italic
+				line-height: 1.5em
+				margin: 1em 0 1em 0
+
+			code
+				background-color: #282a36
+				border-radius: 5px
+				color: white
+				font-family: monospace
+				padding: 0.2em
+
+			code-editor
+				$width: 130%
+				width: $width
+				margin: 2em 0 2em (-($width - 100%) / 2)
+
+		.navigation
+			margin-top: 1.5em
+			overflow: hidden
+
+			a
+				line-height: 1.5em
+				text-decoration: none
+				color: $muted-text
+
+				&:hover
+					color: black
+
+			.prev
+				float: left
+				display: inline-block
+			.next
+				float: right
+				display: inline-block
+
+		.contribute
+			color: $muted-text
+			margin: 2em 0 0 0
+
+			a
+				color: black

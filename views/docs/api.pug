@@ -1,0 +1,142 @@
+extends docs-base
+
+block doc
+	h1 API
+	h2 #[code= 'fig([options])']
+	p #[b options] - an object that can take the following properties:
+	.nest
+		p.
+			#[b debug] - if set to #[b true] turns on the verbose
+			logger. Useful during development, should be set to
+			#[b false] in production.
+	p.
+		Returns a new #[b fig] instance
+
+	h2 Methods
+	h3 #[code= 'fig#use(component[, name])']
+	p.
+		Registers the specified #[code component], optionally with the
+		specified name.
+	p.
+		#[code component] is usually a result of running a .fig component file
+		through the fig-compiler, you don't really have to worry about it but
+		it is possible to write a component manually using an ordinary object.
+	p.
+		#[code component] can be an object with the following keys:
+	.nest
+		p.
+			#[b template] - required - function that should take a
+			#[code locals] object as an argument and return plain HTML.
+		p.
+			#[b name] - name of the component, should be in kebab-case.
+			Required if #[code fig#use] didn't receive a
+			#[code name] parameter.
+		p.
+			#[b style] - string of plain css markup.
+		p.
+			#[b default] - function that gets called on every re-render with
+			the following parameters (in order of listing):
+		.nest
+			p.
+				#[code view] - empty object, ready to be populated with
+				custom keys. Gets passed to the #[b template] as an argument.
+			p.
+				#[code opts] - state object if the component is mounted
+				as the root component, otherwise an opts object.
+			p.
+				#[code emit] - event emitter function, same as
+				#[code fig#emit]
+	p.
+		The component can also be a string, containing the URL from which fig
+		would pull the component into the registry. See the fig-compiler's
+		#[a(href='https://github.com/nikersify/fig-compiler#connect-middleware') docs] for
+		detailed usage.
+
+	h3 #[code= 'fig#on(domain, listener)']
+	p.
+		Registers an event #[code listener] on the given #[code domain].
+		#[code domain] can contain a wildcard, which matches 0 or more
+		characters under itself.
+
+	h3 #[code= 'fig#once(domain, listener)']
+	p.
+		Same as #[code fig#on], except that the listener only gets called once.
+		Technology!
+
+	h3 #[code= 'fig#off(domain[, listener])']
+	p.
+		Removes an event #[code listener] on the given #[code domain].
+		If #[code listener] is not specified, ALL listeners listening to
+		#[code domain] get removed!
+
+	h3 #[code= 'fig#emit(domain[, payload])']
+	p.
+		emits an event of the given #[code domain], optionally with the given
+		#[code payload]. #[code payload] can be any object or any primitive
+		value.
+
+	h3 #[code= 'fig#mount(element, componentName)']
+	p.
+		Replaces the #[code element] with a rendered component with the
+		given #[code componentName].
+	p.
+		#[code element] can either be a string or an #[code HTMLElement].
+
+	h3 #[code= 'fig#update()']
+	.nest
+		p.
+			Forces a re-render of the view in your app. Useful pretty much
+			never.
+
+	// ref state _$root _bus _chain _components _id _opts
+	h2 Properties
+	h3 #[code= 'fig#state']
+	p.
+		Object containing the instance's data. See the
+		#[a(href='/docs/guide/updating-the-state') guide] for detailed usage.
+
+	h3 #[code= 'fig#ref']
+	p.
+		An object containing references of elements skipped by the skip mixin.
+		See the #[a(href='/docs/guide/element-referencing') guide] for detailed
+		usage.
+
+	h2 Internal properties
+	p.
+		Marked internal by both the underscore prefixes and by the header above
+		this paragraph, these should not be used in any "real" code.
+		Documented here for debugging and contributors' needs.
+
+	h3 #[code= 'fig#_$root']
+	p.
+		Reference to the root element the instance is mounted to. Null before
+		mount.
+
+	h3 #[code= 'fig#_bus']
+	p.
+		Contains the instance's event bus, with a #[code listeners] array
+		as a property. All of its prototype methods are exported on the main
+		instance object. E.g. #[code= 'app._bus.on === app.on'].
+
+	h3 #[code= 'fig#_chain']
+	p.
+		Fig instance's method calls are "stacked" onto this object, in order
+		to provide a synchronous-looking-possibly-async api, especially useful
+		useful when pulling components in #[code fig#use] from a
+		remote source.
+
+	h3 #[code= 'fig#_components']
+	p.
+		The instance's component registry, a
+		#[a(href='https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Map')] Map object
+		containing all of the components registered with #[code fig#use].
+
+	h3 #[code= 'fig#_id']
+	p.
+		An ID used to differentiate the instance from other instances on the page.
+		8 character long string.
+
+	h3 #[code= 'fig#_opts']
+	p.
+		Contains the options object the instance was initialized with merged
+		with fig's default options object.

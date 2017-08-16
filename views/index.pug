@@ -1,0 +1,63 @@
+extends base
+
+block content
+	.gradient
+		include modules/nav
+
+		section.splash
+			.container
+				.splash-container
+					.logo
+						img(src='/static/img/fig-icon.png')
+					.content
+						h1 #[span.main fig.js] #[span.small ALPHA]
+						h2 experimental ui framework
+						.buttons
+							.row
+								a.button(href='/docs/guide') Get started
+								.muted we have nice docs
+							.row
+								a.button(href='https://github.com/nikersify/fig') GitHub
+								.muted pull requests welcome!
+				.highlights
+					.point
+						h2 Pretty
+						p.
+							Components are written in
+							#[a(href='https://pugjs.org') pug.js], one of the
+							cleanest ways of writing HTML templates!
+					.point
+						h2 Eventful
+						p.
+							All state mutations from components are to be emitted
+							on the event bus, resulting in predictable data flow.
+					.point
+						h2 Magical
+						p.
+							Simply modify a property on the state object to result
+							in an instant update to the DOM tree.
+					.point
+						h2 Lean
+						p.
+							Minified & gzipped fig.js distribution weight lies
+							somewhere in the neighborhood of 5kB.
+
+	section.try-it
+		.container
+			h1 Live demo
+			include examples/index/splash
+			p This editor was built using fig!
+
+	.gradient
+		section.cfa
+			.container
+				.text
+					h1 Ready to try fig?
+					h2 It's open-source!
+
+				.btn
+					a.button(href='/docs/guide') Read the guide
+
+		footer
+			.container
+				p Made by #[a(href='https://nikerino.com') nikersify] :]

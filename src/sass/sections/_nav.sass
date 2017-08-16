@@ -1,0 +1,53 @@
+$logo-height: 1.2em
+$padding: 0.25em
+
+@mixin base
+	font-size: 3em
+
+.nav-padding
+	+base
+	min-height: $logo-height + $padding * 2
+
+nav
+	+base
+	padding: $padding 0 $padding 0
+
+	&.fixed
+		position: fixed
+		width: 100%
+		background-color: rgba(white, 0.95)
+		border-bottom: 1px solid rgba(black, 0.25)
+
+		.container
+			max-width: unset
+
+	.container
+		display: flex
+		justify-content: space-between
+
+		a.logo
+			font-family: Bebas
+			position: relative
+			text-decoration: none
+
+			img
+				vertical-align: middle
+				height: 1.2em
+				margin-right: 0.3em
+
+		.items
+			float: right
+			font-size: 0.4em
+			line-height: 2.75em
+
+			a
+				display: inline-block
+				padding: 0 0.75em 0 0.75em
+				text-decoration: none
+				transition: 0.25s ease
+
+				&:last-child
+					padding-right: 0
+
+				&:hover
+					color: $muted-text
