@@ -111,10 +111,14 @@ block doc
 			.name index.html
 			script(type='x-example').
 				<div id='app'></div>
-	p.
-		It's possible to pass any data type to components, not just strings.
-		See another example
-		#[a(href='https://github.com/nikersify/fig/tree/master/test/integration/opts/fixtures') here].
+	p.warn.
+		Although it is possible to pass any data as props to components,
+		when reading data off the #[b opts] object it is required to cast
+		Boolean and Integer with #[b Boolean()] and #[b parseInt()] in that
+		order. This hack is required for many of pug's features to work
+		properly, see this
+		#[a(href='https://github.com/nikersify/fig/tree/master/test/integration/opts') test] for
+		more information.
 
 	h2 Slots
 	p.
