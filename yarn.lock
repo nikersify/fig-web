@@ -1253,13 +1253,6 @@ extsprintf@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.0.2.tgz#e1080e0658e300b06294990cc70e1502235fd550"
 
-fig-compiler@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/fig-compiler/-/fig-compiler-0.2.0.tgz#6709b00d9b8d96736625ba923e921a3c33688ac3"
-  dependencies:
-    babel-preset-es2015 "^6.24.1"
-    pug "^2.0.0-rc.2"
-
 fig-compiler@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fig-compiler/-/fig-compiler-0.2.1.tgz#af223ab2e7f19b397d4ddab3c17e8b5f5927d1cd"
@@ -1268,13 +1261,6 @@ fig-compiler@^0.2.1:
     babel-preset-es2015 "^6.24.1"
     pug "^2.0.0-rc.2"
 
-figify@^0.1.0:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/figify/-/figify-0.1.1.tgz#962bcb903315c2b89a9ba71dabaf30756196e5ac"
-  dependencies:
-    fig-compiler "^0.2.0"
-    through2 "^2.0.3"
-
 figify@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/figify/-/figify-0.1.3.tgz#f3d8e58a78ee1dc43c1a194b2b017e901fe5001c"
@@ -1282,11 +1268,11 @@ figify@^0.1.3:
     fig-compiler "^0.2.1"
     through2 "^2.0.3"
 
-figjs@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/figjs/-/figjs-0.1.2.tgz#215cdc8f7e8b79cedaa69a5a9d90dc68f957ee06"
+figjs@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/figjs/-/figjs-0.2.0.tgz#ee79192e1b3107f84e6a6d8c80d52764f7965cd7"
   dependencies:
-    figify "^0.1.0"
+    nanomorph "^5.1.2"
 
 filename-regex@^2.0.0:
   version "2.0.1"
@@ -2048,6 +2034,10 @@ ms@2.0.0:
 nan@^2.3.0, nan@^2.3.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.6.2.tgz#e4ff34e6c95fdfb5aecc08de6596f43605a7db45"
+
+nanomorph@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/nanomorph/-/nanomorph-5.1.2.tgz#66d125098728e54b0ecaa0c8498036d395d3f25d"
 
 negotiator@0.6.1:
   version "0.6.1"
