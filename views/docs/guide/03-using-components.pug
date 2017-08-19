@@ -5,41 +5,8 @@ block doc
 	p.
 		This is how a basic application in fig looks like: TODO
 
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
+	include ../../examples/simplest-app
 
-				app.state = {
-					message: 'Hello!'
-				}
-
-				app.use(require('./Component.fig'))
-
-				app.mount('#app', 'main-component')
-		.file
-			.name Component.fig
-			script(type='x-example').
-				label main-component
-
-				template
-					h1= title
-
-				style.
-					h1 {
-						font-style: italic;
-					}
-
-				script.
-					export default (view, opts, emit) => {
-						view.title = opts.message
-					}
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
 	h2 app.js
 	p.
 		#[b= "fig( [config] )"] returns a new fig instance, #[b config] is

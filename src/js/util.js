@@ -16,7 +16,6 @@ module.exports = {
 	id: () => Math.random().toString(36).slice(2, 8),
 	cm: $el => codeMirror($el, {
 		autoCloseBrackets: true,
-		autofocus: true,
 		cursorHeight: 1,
 		indentUnit: 4,
 		indentWithTabs: true,
@@ -73,6 +72,10 @@ module.exports = {
 		})
 	},
 	updateIFrame: ($container, html, script) => {
+		if (!html) {
+			html = '<div id=\'app\'></div>'
+		}
+
 		// Clear old iframes
 		if ($container.children.length !== 0) {
 			$container.querySelector('iframe').remove()

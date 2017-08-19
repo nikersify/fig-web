@@ -1,0 +1,62 @@
+.__example
+	.file
+		.name app.js
+		script(type='x-example').
+			const fig = require('figjs')
+			const app = fig()
+
+			app.use(require('./Main.fig'))
+			app.use(require('./SingleSlot.fig'))
+			app.use(require('./ManySlots.fig'))
+
+			app.mount('#app', 'main')
+	.file
+		.name Main.fig
+		script(type='x-example').
+			template
+				h2 single slot
+				single-slot
+					div hello!
+
+				h2 many slots
+				many-slots
+					div hey!
+					div hi!
+					div hello!
+	.file
+		.name SingleSlot.fig
+		script(type='x-example').
+			template
+				slot
+
+			style.
+				single-slot {
+					background-color: #de8b3d;
+					border: 1px black solid;
+					padding: 1em;
+				}
+
+				single-slot div {
+					background-color: #f7dfb8;
+					border: 1px black solid;
+					padding: 0.5em;
+				}
+	.file
+		.name ManySlots.fig
+		script(type='x-example').
+			template
+				slot
+				slot
+
+			style.
+				many-slots {
+					background-color: #de8b3d;
+					border: 1px black solid;
+					padding: 1em;
+				}
+
+				many-slots div {
+					background-color: #f7dfb8;
+					border: 1px black solid;
+					padding: 0.5em;
+				}

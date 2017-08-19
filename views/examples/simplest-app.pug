@@ -1,0 +1,31 @@
+.__example
+	.file
+		.name app.js
+		script(type='x-example').
+			const fig = require('figjs')
+			const app = fig()
+
+			app.state = {
+				message: 'Hello!'
+			}
+
+			app.use(require('./Component.fig'))
+
+			app.mount('#app', 'main-component')
+	.file
+		.name Component.fig
+		script(type='x-example').
+			label main-component
+
+			template
+				h1= title
+
+			style.
+				h1 {
+					font-style: italic;
+				}
+
+			script.
+				export default (view, opts, emit) => {
+					view.title = opts.message
+				}

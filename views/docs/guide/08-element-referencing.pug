@@ -11,31 +11,7 @@ block doc
 		#[a(href='https://codemirror.net/') CodeMirror] function properly.
 	p Let's see an example!
 
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
-
-				app.use(require('./Component.fig'))
-
-				app.on('fig ready', () => {
-					console.log(app.ref.thing)
-				})
-
-				app.mount('#app', 'component')
-		.file
-			.name Component.fig
-			script(type='x-example').
-				template
-					+skip('thing')
-						.skipped hi!
-
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
+	include ../../examples/element-referencing
 
 	p.
 		If you open your developer console (F12 in most browsers), you should

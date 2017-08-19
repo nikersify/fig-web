@@ -8,47 +8,9 @@ block doc
 		state of the art markup.
 
 	h2 Basic nesting
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
 
-				app.use(require('./Parent.fig'))
-				app.use(require('./Child.fig'))
+	include ../../examples/basic-nesting
 
-				app.mount('#app', 'parent')
-		.file
-			.name Parent.fig
-			script(type='x-example').
-				template
-					.x I am the parent
-					child
-
-				style.
-					parent {
-						background-color: #de8b3d;
-						border: 1px black solid;
-						padding: 1em;
-					}
-		.file
-			.name Child.fig
-			script(type='x-example').
-				template
-					.x And I am the child!
-
-				style.
-					child {
-						background-color: #f7dfb8;
-						border: 1px black solid;
-						padding: 0.5em;
-						margin-top: 0.5em;
-					}
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
 	p.
 		The above example should be pretty explanatory. Fig looks for tags
 		of registered components in the template, if it matches one of the
@@ -63,54 +25,9 @@ block doc
 	p.
 		You can pass data into child components by attaching it to attributes
 		of the child component tag.
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
 
-				app.use(require('./Parent.fig'))
-				app.use(require('./Child.fig'))
+	include ../../examples/passing-data
 
-				app.mount('#app', 'parent')
-		.file
-			.name Parent.fig
-			script(type='x-example').
-				template
-					child(msg = 'england is my city')
-					child(msg = 'get off my board')
-					child(msg = 'i am a string')
-
-				style.
-					parent {
-						background-color: #de8b3d;
-						border: 1px black solid;
-						padding: 1em;
-					}
-		.file
-			.name Child.fig
-			script(type='x-example').
-				template
-					div= message
-
-				style.
-					child {
-						background-color: #f7dfb8;
-						border: 1px black solid;
-						padding: 0.5em;
-						margin-top: 0.5em;
-					}
-
-				script.
-					export default (view, opts) => {
-						view.message = `"${opts.msg}" - said the child`
-					}
-
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
 	p.warn.
 		Although it is possible to pass any data as props to components,
 		when reading data off the #[b opts] object it is required to cast
@@ -127,72 +44,8 @@ block doc
 		can use as many slotted elements as you want to - they'll be distributed
 		on all #[b slot] tags from top to bottom.
 
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
+	include ../../examples/slots
 
-				app.use(require('./Main.fig'))
-				app.use(require('./SingleSlot.fig'))
-				app.use(require('./ManySlots.fig'))
-
-				app.mount('#app', 'main')
-		.file
-			.name Main.fig
-			script(type='x-example').
-				template
-					h2 single slot
-					single-slot
-						div hello!
-
-					h2 many slots
-					many-slots
-						div hey!
-						div hi!
-						div hello!
-		.file
-			.name SingleSlot.fig
-			script(type='x-example').
-				template
-					slot
-
-				style.
-					single-slot {
-						background-color: #de8b3d;
-						border: 1px black solid;
-						padding: 1em;
-					}
-
-					single-slot div {
-						background-color: #f7dfb8;
-						border: 1px black solid;
-						padding: 0.5em;
-					}
-		.file
-			.name ManySlots.fig
-			script(type='x-example').
-				template
-					slot
-					slot
-
-				style.
-					many-slots {
-						background-color: #de8b3d;
-						border: 1px black solid;
-						padding: 1em;
-					}
-
-					many-slots div {
-						background-color: #f7dfb8;
-						border: 1px black solid;
-						padding: 0.5em;
-					}
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
 	p.
 		Notice how the #[b many-slots] component's template only has two slots,
 		so the third slotted element #[b div hello!] got discarded.

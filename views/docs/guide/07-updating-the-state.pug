@@ -12,94 +12,12 @@ block doc
 		The state updates are being detected with JavaScript's ordinary object
 		setters, therefore any new keys added to the state object will NOT
 		update the view!
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
 
-				app.use(require('./Component.fig'))
+	include ../../examples/updating-state
 
-				app.state = {
-					clickCount: 0
-				}
-
-				app.on('button click', () => {
-					app.state.clickCount++
-				})
-
-				app.mount('#app', 'component')
-		.file
-			.name Component.fig
-			script(type='x-example').
-				template
-					button(@click = clicked) Click me!
-					div clicked the button \#{clickCount} times!
-
-				script.
-					export default (view, opts, emit) => {
-						view.clickCount = opts.clickCount
-
-						view.clicked = e => {
-							emit('button click')
-						}
-					}
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
 	p.
 		Besides listening for value changes on the object, fig also wraps
 		all mutating array methods which makes it really easy to update an array
 		painlessly.
 
-	.__example
-		.file
-			.name app.js
-			script(type='x-example').
-				const fig = require('figjs')
-				const app = fig()
-
-				app.use(require('./Component.fig'))
-
-				app.state = {
-					clicks: []
-				}
-
-				app.on('clicks add', time => {
-					app.state.clicks.push(time)
-				})
-
-				app.on('clicks clear', () => {
-					app.state.clicks.splice(0)
-				})
-
-				app.mount('#app', 'component')
-		.file
-			.name Component.fig
-			script(type='x-example').
-				template
-					button(@click = clickAdd) Click me!
-					button(@click = clickClear) Clear!
-					ul
-						each c in clicks
-							li clicked at \#{c}s!
-
-				script.
-					export default (view, opts, emit) => {
-						view.clicks = opts.clicks
-
-						view.clickAdd = e => {
-							const time = (e.timeStamp / 1000).toFixed(2)
-							emit('clicks add', time)
-						}
-
-						view.clickClear = e => {
-							emit('clicks clear')
-						}
-					}
-		.file
-			.name index.html
-			script(type='x-example').
-				<div id='app'></div>
+	include ../../examples/updating-state-arrays

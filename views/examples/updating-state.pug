@@ -1,0 +1,33 @@
+.__example
+	.file
+		.name app.js
+		script(type='x-example').
+			const fig = require('figjs')
+			const app = fig()
+
+			app.use(require('./Component.fig'))
+
+			app.state = {
+				clickCount: 0
+			}
+
+			app.on('button click', () => {
+				app.state.clickCount++
+			})
+
+			app.mount('#app', 'component')
+	.file
+		.name Component.fig
+		script(type='x-example').
+			template
+				button(@click = clicked) Click me!
+				div clicked the button \#{clickCount} times!
+
+			script.
+				export default (view, opts, emit) => {
+					view.clickCount = opts.clickCount
+
+					view.clicked = e => {
+						emit('button click')
+					}
+				}

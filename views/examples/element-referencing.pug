@@ -1,0 +1,20 @@
+.__example
+	.file
+		.name app.js
+		script(type='x-example').
+			const fig = require('figjs')
+			const app = fig()
+
+			app.use(require('./Component.fig'))
+
+			app.on('fig ready', () => {
+				console.log(app.ref.thing)
+			})
+
+			app.mount('#app', 'component')
+	.file
+		.name Component.fig
+		script(type='x-example').
+			template
+				+skip('thing')
+					.skipped hi!
