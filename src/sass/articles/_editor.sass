@@ -1,3 +1,7 @@
+$editor-bg: #282a36
+$editor-darker: #1c1e26
+$editor-lighter: #4c5067
+
 @keyframes pop
 	from
 		display: none
@@ -18,12 +22,12 @@
 
 article.editor
 	border-radius: 5px
-	box-shadow: 0 2px 3px rgba(black, 0.6)
+	box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6)
 	display: flex
 	position: relative
 
 	.source
-		background-color: #282a36
+		background-color: $editor-bg
 		border-radius: 5px 0 0 5px
 		flex: 1
 		position: relative
@@ -44,45 +48,54 @@ article.editor
 
 				.CodeMirror-overlayscroll-vertical
 					right: 5px
-					background-color: #1c1e26
+					background-color: $editor-darker
 
 					div
-						background-color: #4c5067
+						background-color: $editor-lighter
 
 				.CodeMirror-overlayscroll-horizontal
-					background-color: #1c1e26
+					background-color: $editor-darker
 					bottom: 5px
 
 					div
-						background-color: #4c5067
+						background-color: $editor-lighter
 
 		.tabs
 			display: flex
+			align-items: stretch
+
 			editor-tab
 				flex: 1
+				overflow: hidden
+
 				&:first-child > .tab
 					border-radius: 5px 0 0 0
 
 			.tab
-				cursor: pointer
 				border-bottom: 1px solid black
 				border-right: 1px solid black
+				cursor: pointer
+				overflow: hidden
 				padding: 0.5em 1em 0.5em 1em
 				position: relative
 				text-align: center
-				white-space: nowrap
 				user-select: none
+				white-space: nowrap
 
 				&.selected
 					border-bottom: none
-					background-color: #282a36
+					background-color: $editor-bg
 					color: white
 
+					button
+						background: linear-gradient(to left, $editor-bg 65%, transparent)
+
 				&:not(.selected)
-					background-color: #1c1e26
+					background-color: $editor-darker
 					color: #4e4e4e
 					button
-						color: #282a36
+						color: $editor-bg
+						background: linear-gradient(to left, $editor-darker 65%, transparent)
 
 					&:not(.editing) input
 						display: none
@@ -93,7 +106,7 @@ article.editor
 					height: 3px
 					opacity: 0
 					content: ''
-					background-color: #4c5067
+					background-color: $editor-lighter
 					right: 0
 					left: 0
 					bottom: 0
@@ -120,7 +133,6 @@ article.editor
 						display: inline-block
 						font-family: inherit
 						font-size: 1em
-						height: 2em
 						margin: -0.5em
 						outline: none
 						text-align: center
@@ -130,7 +142,6 @@ article.editor
 						background: #bec0c9
 
 				button
-					background: none
 					border: none
 					color: white
 					cursor: pointer
@@ -138,7 +149,8 @@ article.editor
 					font-size: 0.75em
 					font-weight: bold
 					height: 20px
-					margin: 5px
+					margin: 5px 0 5px 0
+					padding-right: 17.5px
 					outline: none
 					position: absolute
 					right: 0
@@ -148,10 +160,11 @@ article.editor
 
 				&.new
 					flex: 0
+					overflow: visible
 
 		button.run
 			animation: 0.5s cubic-bezier(0, 0.99, 0.25, 1) pop
-			background-color: #4c5067
+			background-color: $editor-lighter
 			border-radius: 5px
 			border: none
 			bottom: 10px
@@ -172,9 +185,9 @@ article.editor
 			transition: ease-in
 
 	.button-circle
-		background-color: #4c5067
+		background-color: $editor-lighter
 		border-radius: 50%
-		border: 3px solid #1c1e26
+		border: 3px solid $editor-darker
 		cursor: pointer
 		display: block
 		height: 75px
@@ -199,7 +212,7 @@ article.editor
 			right: 0
 			top: 0
 			border-bottom: 7.5px solid transparent
-			border-left: 15px solid #4c5067
+			border-left: 15px solid $editor-lighter
 			border-top: 7.5px solid transparent
 			display: block
 			height: 0
@@ -214,7 +227,7 @@ article.editor
 			right: 0
 			top: 0
 			border-bottom: 12.5px solid transparent
-			border-left: 25px solid #282a36
+			border-left: 25px solid $editor-bg
 			border-top: 12.5px solid transparent
 			display: block
 			height: 0
@@ -250,7 +263,7 @@ article.editor
 				&:after
 					animation: 0.75s infinite ease-out loading-spin
 					border-radius: 50%
-					border: 5px solid #1c1e26
+					border: 5px solid $editor-darker
 					bottom: 0
 					clip-path: polygon(50% 50%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 0, 40% 0)
 					content: ''
@@ -263,5 +276,9 @@ article.editor
 					width: 50px
 
 		.result
-			height: 0
+			height: 100%
 			padding: 15px
+
+			iframe
+				height: 100%
+				width: 100%

@@ -45,6 +45,7 @@ module.exports = (root, files) => {
 		}
 
 		app.emit('tab select', app.state.tabs[0].id)
+		editor.getInputField().blur()
 		app.emit('code run')
 	})
 
@@ -64,7 +65,7 @@ module.exports = (root, files) => {
 		const syntax = util.getSyntax(t.name)
 		editor.setOption('mode', syntax)
 
-		docs[id].getEditor().focus()
+		editor.focus()
 	})
 
 	app.on('tab new', (opts = {}) => {
@@ -180,6 +181,7 @@ module.exports = (root, files) => {
 					}
 				}
 			})()
+
 			util.updateIFrame(app.ref.result, html, compiled)
 		}).catch(err => {
 			if (err.annotated) {

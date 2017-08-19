@@ -9,7 +9,8 @@ template
 			.tabs
 				each tab in tabs
 					editor-tab(tab=tab closable=(tabs.length > 1))
-				.tab.new(@click=newTab) +
+				.tab-new-container
+					.tab.new(@click=newTab) +
 
 			+skip('code')
 				.code
