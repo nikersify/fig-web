@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "npm run sass && npm run js",
     "sass": "node-sass src/sass/main.sass public/css/styles.css",
     "sass:watch": "npm run sass -- --watch",
     "js": "browserify src/js/index.js -t figify -o public/js/bundle.js -v",

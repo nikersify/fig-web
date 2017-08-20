@@ -8,12 +8,16 @@
 # deps
 npm install
 
-# start the build watcher scripts
+# build all the things
+npm run build
+
+# start the server
+node server.js
+
+# during development it is also useful to use the watcher scripts
+# for maximum convenience
 npm run js:watch
 npm run sass:watch
-
-# run the server
-node server.js
 ```
 
 # license
