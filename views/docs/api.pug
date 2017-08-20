@@ -15,22 +15,22 @@ block doc
 	h2 Methods
 	h3 #[code= 'fig#use(component[, name])']
 	p.
-		Registers the specified #[code component], optionally with the
+		Registers the specified #[b component], optionally with the
 		specified name.
 	p.
-		#[code component] is usually a result of running a .fig component file
+		#[b component] is usually a result of running a .fig component file
 		through the fig-compiler, you don't really have to worry about it but
 		it is possible to write a component manually using an ordinary object.
 	p.
-		#[code component] can be an object with the following keys:
+		#[b component] can be an object with the following keys:
 	.nest
 		p.
 			#[b template] - required - function that should take a
-			#[code locals] object as an argument and return plain HTML.
+			#[b locals] object as an argument and return plain HTML.
 		p.
 			#[b name] - name of the component, should be in kebab-case.
-			Required if #[code fig#use] didn't receive a
-			#[code name] parameter.
+			Required if #[code fig#use] doesn't receive a
+			#[b name] parameter.
 		p.
 			#[b style] - string of plain css markup.
 		p.
@@ -38,13 +38,13 @@ block doc
 			the following parameters (in order of listing):
 		.nest
 			p.
-				#[code view] - empty object, ready to be populated with
+				#[b view] - empty object, ready to be populated with
 				custom keys. Gets passed to the #[b template] as an argument.
 			p.
-				#[code opts] - state object if the component is mounted
+				#[b opts] - state object if the component is mounted
 				as the root component, otherwise an opts object.
 			p.
-				#[code emit] - event emitter function, same as
+				#[b emit] - event emitter function, same as
 				#[code fig#emit]
 	p.
 		The component can also be a string, containing the URL from which fig
@@ -54,8 +54,8 @@ block doc
 
 	h3 #[code= 'fig#on(domain, listener)']
 	p.
-		Registers an event #[code listener] on the given #[code domain].
-		#[code domain] can contain a wildcard, which matches 0 or more
+		Registers an event #[b listener] on the given #[b domain].
+		#[b domain] can contain a wildcard, which matches 0 or more
 		characters under itself.
 
 	h3 #[code= 'fig#once(domain, listener)']
@@ -65,22 +65,22 @@ block doc
 
 	h3 #[code= 'fig#off(domain[, listener])']
 	p.
-		Removes an event #[code listener] on the given #[code domain].
-		If #[code listener] is not specified, ALL listeners listening to
-		#[code domain] get removed!
+		Removes an event #[b listener] on the given #[b domain].
+		If #[b listener] is not specified, ALL listeners listening to
+		#[b domain] get removed!
 
 	h3 #[code= 'fig#emit(domain[, payload])']
 	p.
-		emits an event of the given #[code domain], optionally with the given
-		#[code payload]. #[code payload] can be any object or any primitive
+		emits an event of the given #[b domain], optionally with the given
+		#[b payload]. #[b payload] can be any object or any primitive
 		value.
 
 	h3 #[code= 'fig#mount(element, componentName)']
 	p.
-		Replaces the #[code element] with a rendered component with the
-		given #[code componentName].
+		Replaces the #[b element] with a rendered component with the
+		given #[b componentName].
 	p.
-		#[code element] can either be a string or an #[code HTMLElement].
+		#[b element] can either be a string or an #[b HTMLElement].
 
 	h3 #[code= 'fig#update()']
 	.nest
@@ -114,7 +114,7 @@ block doc
 
 	h3 #[code= 'fig#_bus']
 	p.
-		Contains the instance's event bus, with a #[code listeners] array
+		Contains the instance's event bus, with a #[b listeners] array
 		as a property. All of its prototype methods are exported on the main
 		instance object. E.g. #[code= 'app._bus.on === app.on'].
 

@@ -17,11 +17,10 @@ block doc
 		components, the tag gets populated with the contents of the component's
 		own template.
 	p.warn.
-		Since cycle continues recursively downwards, be careful to not include a
-		component within itself to prevent stack overflows!
+		Because the cycle continues recursively downwards, be careful to not
+		include a component within itself to prevent stack overflows!
 
 	h2 Passing data
-	p todo: data flowing downwards diagram
 	p.
 		You can pass data into child components by attaching it to attributes
 		of the child component tag.

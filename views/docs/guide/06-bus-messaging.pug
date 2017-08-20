@@ -2,11 +2,10 @@ extends ../docs-base
 
 block doc
 	h1 Bus messaging
-	p todo: complete data flow diagram
 	p.
 		All data in from components in fig going upwards is meant to flow
 		through the #[b event bus]. It can be accessed through the
-		#[b .on], #[b .once], #[b .off] and #[b .emit] properties of the fig
+		#[b .on], #[b .once], #[b .off] and #[b .emit] methods of the fig
 		instance, or with the #[b emit] parameter passed to a component.
 	p.
 		The methods do what their names' suggest, meant to be used the same as
