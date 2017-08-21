@@ -2,6 +2,21 @@ $editor-bg: #282a36
 $editor-darker: #1c1e26
 $editor-lighter: #4c5067
 
+=spinner($size)
+	animation: 0.75s infinite ease-out loading-spin
+	border-radius: 50%
+	border: 5px solid $editor-darker
+	bottom: 0
+	clip-path: polygon(50% 50%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 0, 40% 0)
+	content: ''
+	height: $size
+	left: 0
+	margin: auto
+	position: absolute
+	right: 0
+	top: 0
+	width: $size
+
 @keyframes pop
 	from
 		display: none
@@ -20,6 +35,32 @@ $editor-lighter: #4c5067
 	to
 		transform: rotate(540deg)
 
+// styles for non-loaded editor
+.__example
+	position: relative
+	height: 75px
+
+	.file
+		display: none
+
+	$separation: 30px
+
+	&:after
+		+spinner(25px)
+		bottom: $separation
+
+	&:before
+		content: 'Loading example...'
+		margin: auto 0
+		position: absolute
+		top: $separation
+		bottom: 0
+		right: 0
+		left: 0
+		text-align: center
+		height: 1em
+
+// styles for after the editor has loaded in
 article.editor
 	border-radius: 5px
 	box-shadow: 0 0px 6px rgba(0, 0, 0, 0.6)
@@ -259,19 +300,7 @@ article.editor
 			&.loading
 				display: block
 				&:after
-					animation: 0.75s infinite ease-out loading-spin
-					border-radius: 50%
-					border: 5px solid $editor-darker
-					bottom: 0
-					clip-path: polygon(50% 50%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 0, 40% 0)
-					content: ''
-					height: 50px
-					left: 0
-					margin: auto
-					position: absolute
-					right: 0
-					top: 0
-					width: 50px
+					+spinner(50px)
 
 		.result
 			height: 100%
