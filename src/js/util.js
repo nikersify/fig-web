@@ -88,6 +88,11 @@ module.exports = {
 		$iframe.contentWindow.document.write(html)
 		$iframe.contentWindow.document.close()
 
+		// Default styles
+		const $style = $iframe.contentDocument.createElement('style')
+		$style.innerHTML = 'body {font-family: sans-serif}'
+		$iframe.contentDocument.head.appendChild($style)
+
 		// Main bundle
 		const $script = $iframe.contentDocument.createElement('script')
 		$script.innerHTML = script
