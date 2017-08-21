@@ -110,3 +110,40 @@
 
 			a
 				color: black
+
+@media screen and (min-width: $bp-medium) and (max-width: $bp-stop-centering-content)
+	.docs
+		.content
+			padding: 0 25px
+
+			.content-inner
+				margin: 100px 0
+
+@media screen and (max-width: $bp-medium - 1px)
+	.docs
+		flex-direction: column-reverse
+
+		.content
+			padding: 0 25px
+
+			.content-inner
+				margin-bottom: 0
+
+		aside
+			padding: 0
+			margin: 25px
+
+			.aside-inner
+				position: relative
+				text-align: center
+
+@media screen and (max-width: $bp-small)
+	.docs
+		.content
+			.content-inner
+				code-editor
+					width: 100%
+					margin: initial
+
+		aside
+			margin: 5px

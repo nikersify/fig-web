@@ -48,8 +48,26 @@ nav
 				text-decoration: none
 				transition: 0.25s ease
 
+				&:first-child
+					padding-left: 0
+
 				&:last-child
 					padding-right: 0
 
 				&:hover
 					color: $muted-text
+
+@media screen and (max-width: $bp-xsmall)
+	.nav-padding
+		display: none
+
+	nav, nav.fixed
+		position: unset
+
+		.container
+			align-items: center
+			flex-direction: column
+			padding: 0
+
+			.items
+				margin-top: 0.5em

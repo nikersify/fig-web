@@ -31,7 +31,6 @@ article.editor
 		border-radius: 5px 0 0 5px
 		flex: 1
 		position: relative
-		width: 0
 
 		.code
 			position: relative
@@ -235,9 +234,8 @@ article.editor
 
 	.result-container
 		flex: 1
-		width: 0
+		background-color: white
 		border-radius: 0 5px 5px 0
-		background-color: rgba(white, 0.75)
 		overflow: auto
 		position: relative
 
@@ -282,3 +280,19 @@ article.editor
 			iframe
 				height: 100%
 				width: 100%
+
+@media screen and (max-width: $bp-small)
+	code-editor
+		article.editor
+			flex-direction: column
+
+			.source
+				border-radius: 5px 5px 0 0px
+
+				.tabs
+					.tab-new-container
+						.tab
+							border-radius: 0 5px 0 0
+
+			.result-container
+				border-radius: 0 0 5px 5px

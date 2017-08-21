@@ -10,6 +10,7 @@ section.splash
 
 			h1, h2
 				font-family: Bebas
+
 			h1
 				line-height: 5em * 1.3
 
@@ -22,6 +23,7 @@ section.splash
 					font-size: 1.5em * 1.3
 					vertical-align: middle
 					margin: 0 0 0 0.5em * 1.3
+
 			h2
 				margin-top: -0.2em * 1.3
 				font-size: 2.25em * 1.3
@@ -31,10 +33,12 @@ section.splash
 
 				.row
 					margin: 0em 0em 0.5em * 1.3 0
+
 					a.button
 						width: 150px
 						margin-right: 0.5em * 1.3
 						font-size: 1.5em
+
 					.muted
 						display: inline-block
 						color: $muted-text
@@ -42,7 +46,9 @@ section.splash
 
 	.highlights
 		display: flex
+		flex-wrap: wrap
 		justify-content: space-around
+		margin-top: -2em
 		position: relative
 
 		.point
@@ -55,5 +61,34 @@ section.splash
 				margin: 0.5em 0 1em 0
 				line-height: 1.25em
 
-			width: 21%
+			width: 200px
+			margin-top: 2em
 			text-align: center
+
+	@media screen and (max-width: $bp-small)
+		.splash-container
+			flex-direction: column
+			text-align: center
+
+			.content
+				text-align: center
+
+				h1
+					span.main
+						font-size: 5em
+					span.small
+						display: none
+
+				h2
+					font-size: 2.5em
+
+				.buttons
+					display: flex
+					justify-content: center
+
+					.row
+						a.button
+							margin: 0 0.2em
+
+						.muted
+							display: none

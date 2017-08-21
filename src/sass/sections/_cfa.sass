@@ -4,6 +4,15 @@ section.cfa
 		display: flex
 		justify-content: space-around
 
+		@media screen and (max-width: $bp-xsmall)
+			flex-direction: column
+
+			.text
+				text-align: center
+
+			a.button
+				margin-top: 1em
+
 		h1
 			font-family: Bebas, sans-serif
 			font-weight: bold
