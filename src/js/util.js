@@ -60,15 +60,16 @@ module.exports = {
 		}
 
 		return fetch(url, init).then(res => {
-			if (res.status === 400) {
-				return res.text().then(text => {
-					return Promise.reject(JSON.parse(text))
-				})
-			} else if (res.ok) {
-				return res.text()
+			return res.json()
+		}).then(data => {
+			console.log(data)
+			if (!data.success) {
+				throw new Error(data.error)
 			}
 
-			throw res
+			if (data.success) {
+				return data.result
+			}
 		})
 	},
 	updateIFrame: ($container, html, script) => {
@@ -84,6 +85,7 @@ module.exports = {
 		const $iframe = document.createElement('iframe')
 
 		$container.appendChild($iframe)
+
 		$iframe.contentWindow.document.open()
 		$iframe.contentWindow.document.write(html)
 		$iframe.contentWindow.document.close()

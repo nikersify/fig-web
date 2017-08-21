@@ -184,16 +184,7 @@ module.exports = (root, files) => {
 
 			util.updateIFrame(app.ref.result, html, compiled)
 		}).catch(err => {
-			if (err.annotated) {
-				app.state.errorMsg = err.annotated
-			} else if (err.codeFrame) {
-				const location = err.filename + '\n'
-				app.state.errorMsg = location +
-					stripAnsi(err.codeFrame)
-			} else {
-				app.state.errorMsg = err.toString()
-			}
-
+			app.state.errorMsg = err.toString()
 			app.state.overlay = 'error'
 		}).then(() => {
 			app.state.loading = false
