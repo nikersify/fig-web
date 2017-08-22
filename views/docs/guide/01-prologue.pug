@@ -1,6 +1,6 @@
 extends ../docs-base
 
-block doc
+//- block doc
 	h1 Prologue
 	blockquote hi?
 	p.
@@ -42,3 +42,40 @@ block doc
 		you can checkout my website #[a(href='https://nikerino.com') here] if
 		you want to. Let's move on to the next section!
 
+block doc
+	h1 Prologue
+	p.
+		Hello! Thank you for checking out the docs of fig.js - the JavaScript UI
+		framework which is going to solve all of your life's problems!
+	h2 What?
+	p.
+		Fig.js (henceforth referred to as fig) is a component-based,
+		experimental MVC framework powered by
+		#[a(href='https://pugjs.org') pug templates] and a minimalistic API.
+		Also includes a verbose logger and a nice interface to interact with
+		other DOM libraries.
+	h2 Why?
+	p.
+		The main goal of this project was to provide an abstraction layer to
+		bring pug.js into the world	of dynamic client-side rendered content,
+		with a sweet side effect of gathering more knowledge throughout
+		the process.
+	h2 How?
+	p.
+		In order to reduce the potential weight of the library, pug is used
+		server-side to compile the markup into pure JavaScript functions that
+		spit out HTML, which are sent to the client. Unfortunately, that doesn't
+		make fig the most plug-and-play framework out there, although we believe
+		it is still a fair trade-off between its size and its simplicity.
+	h2 Compatibility?
+	p.
+		Due to time constraints, fig is targeted towards only the most modern
+		of browsers. It is not guaranteed to work properly on older browsers,
+		or even at all.
+	h2 Who?
+	p.
+		I'm just a random guy from the internet creating more random open-source
+		tools and libraries, you can
+		#[a(href='https://nikerino.com') checkout my website] for more
+		incredibly exciting information. Anyways, let's move on to the
+		next section!

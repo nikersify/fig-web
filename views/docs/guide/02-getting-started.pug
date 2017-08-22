@@ -25,9 +25,8 @@ block doc
 	p.
 		Installing with npm: #[code npm install --save figjs]
 
-	- escaped = '<script src="https://unpkg.com/figjs">'
 	p.
-		Pulling from a CDN: #[code= escaped]
+		Pulling from a CDN: #[code= '<script src="https://unpkg.com/figjs">']
 
 	h2 Browserify
 	p.
@@ -42,7 +41,36 @@ block doc
 	p.
 		Get the figify transform: #[code npm install --save figify]
 
-	- escaped = 'browserify <input> -t figify -o <output>'
 	p.
 		Building your bundle:
-		#[code= escaped]
+		#[code= 'browserify <input> -t figify -o <output>']
+
+	h2 Development
+	p.
+		As previously mentioned, you can use the .fig extension for fig
+		components. The syntax is 100% compatible with ordinary .pug, so no
+		editor plugin or any complicated config is required. The only thing
+		you have to do is set an alias for the extension, so that your editor
+		can highlight .fig files properly. Here're suggestions for how to
+		do it in some of the trending editors (assuming you have pug syntax
+		already installed/available):
+
+	h3 Sublime Text
+	p.
+		Open a .fig file, in the menu go to
+		#[b View -> Syntax -> Open all with current extension as...]
+
+	h3 Atom
+	p.
+		Use the #[a(href='https://atom.io/packages/file-types') file-types]
+		package.
+
+	h3 Vim
+	p.
+		Add #[code au BufRead,BufNewFile *.fig setfiletype pug] to your .vimrc
+		file.
+
+	h3 Visual Studio Code
+	p.
+		Press #[code ctrl] + #[code ,] to open settings.json, add
+		#[code "files.associations": {"*.fig": "pug"}].
