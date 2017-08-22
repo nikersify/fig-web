@@ -5,18 +5,114 @@
 			const fig = require('figjs')
 			const app = fig()
 
-			app.use(require('./Main.fig'))
+			app.state = {
+				todos: []
+			}
 
-			app.mount('#app', 'main-view')
+			app.use(require('./TodoItem.fig'))
+			app.use(require('./TodoList.fig'))
+
+			let ids = 0
+			app.on('todo add', text => {
+				app.state.todos.push({
+					id: ids++,
+					done: false,
+					text
+				})
+			})
+
+			app.on('todo check', id => {
+				const todo =
+					app.state.todos.find(todo => todo.id === id)
+
+				todo.done = !todo.done
+			})
+
+			app.on('todo remove', id => {
+				const index =
+					app.state.todos.findIndex(todo => todo.id === id)
+				app.state.todos.splice(index, 1)
+			})
+
+			app.on('todo remove finished', () => {
+				app.state.todos.forEach(todo => {
+					if (todo.done) {
+						app.emit('todo remove', todo.id)
+					}
+				})
+			})
+
+			app.mount('#app', 'todo-list')
 	.file
-		.name Main.fig
+		.name TodoList.fig
 		script(type='x-example').
-			label main-view
-
 			template
-				h1= kek
+				ul
+					each todo in todos
+						li: todo-item(todo = todo)
+
+				form(@submit = add)
+					input(type = 'text' name = 'text')
+					input(type = 'submit' value = 'Add Todo')
+
+				if (todos.filter(t => t.done).length > 0)
+					button(@click = clearDone) Clear Finished
 
 			script.
-				export default (view, opts, bus) => {
-					view.kek = 'welcome!'
+				export default (view, opts, emit) => {
+					view.todos = opts.todos
+
+					view.add = e => {
+						e.preventDefault()
+						const data = new FormData(e.target)
+						emit('todo add', data.get('text'))
+					}
+
+					view.clearDone = () => emit('todo remove finished')
+				}
+
+	.file
+		.name TodoItem.fig
+		script(type='x-example').
+			template
+				input(
+					type = 'checkbox'
+					checked = done
+					@change = check
+				)
+
+				span(
+					@dblclick = remove
+					class = {striked: done}
+				)= text
+
+				a(
+					href = '#'
+					@click = remove
+				) x
+
+			style
+				todo-item .striked {
+					text-decoration: line-through;
+				}
+
+				todo-item a {
+					margin-left: 0.5em
+				}
+
+			script.
+				export default (view, opts, emit) => {
+					const {todo} = opts
+
+					view.text = todo.text
+					view.done = todo.done
+
+					view.check = () => {
+						emit('todo check', todo.id)
+					}
+
+					view.remove = e => {
+						e.preventDefault()
+						emit('todo remove', todo.id)
+					}
 				}
