@@ -62,7 +62,6 @@ module.exports = {
 		return fetch(url, init).then(res => {
 			return res.json()
 		}).then(data => {
-			console.log(data)
 			if (!data.success) {
 				throw new Error(data.error)
 			}
