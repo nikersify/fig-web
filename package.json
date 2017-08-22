@@ -7,6 +7,7 @@
     "js:watch": "watchify src/js/index.js -t figify -o public/js/bundle.js -v"
   },
   "dependencies": {
+    "@nikersify/log": "^1.0.1",
     "body-parser": "^1.17.2",
     "browserify": "^14.4.0",
     "codemirror": "^5.28.0",

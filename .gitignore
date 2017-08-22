@@ -1,3 +1,5 @@
+logs
 node_modules
 public/css/styles.css
 public/js/bundle.js
+config.json
