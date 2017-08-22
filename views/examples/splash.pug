@@ -3,15 +3,20 @@
 		.name app.js
 		script(type='x-example').
 			const fig = require('figjs')
+
+			// Initialize the app
 			const app = fig()
 
+			// Use an initial state value
 			app.state = {
 				todos: []
 			}
 
+			// Register the components
 			app.use(require('./TodoItem.fig'))
 			app.use(require('./TodoList.fig'))
 
+			// Register event listeners
 			let ids = 0
 			app.on('todo add', text => {
 				app.state.todos.push({
@@ -35,13 +40,15 @@
 			})
 
 			app.on('todo remove finished', () => {
-				app.state.todos.forEach(todo => {
+				// Use a copy of the state to iterate cleanly
+				for (const todo of app.state.todos.slice(0)) {
 					if (todo.done) {
 						app.emit('todo remove', todo.id)
 					}
-				})
+				}
 			})
 
+			// Finally, mount to the DOM!
 			app.mount('#app', 'todo-list')
 	.file
 		.name TodoList.fig
