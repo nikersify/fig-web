@@ -71,8 +71,9 @@
 
 					view.add = e => {
 						e.preventDefault()
-						const data = new FormData(e.target)
-						emit('todo add', data.get('text'))
+						const $form = e.target
+						const $input = $form.querySelector('input[name=text]')
+						emit('todo add', $input.value)
 					}
 
 					view.clearDone = () => emit('todo remove finished')
